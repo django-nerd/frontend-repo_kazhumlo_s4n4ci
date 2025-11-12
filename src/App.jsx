@@ -2,43 +2,38 @@ import { useMemo } from 'react'
 import Spline from '@splinetool/react-spline'
 import { Laptop, Cpu, Mouse, HardDrive, Monitor, Router, Wrench, Mail, PhoneCall, Sparkles } from 'lucide-react'
 
+// Produk utama (highlight)
 const products = [
-  {
-    name: 'Laptop Productivity 14',
-    price: 'Rp 8.499.000',
-    image: 'https://images.unsplash.com/photo-1517336714731-489689fd1ca8?q=80&w=1600&auto=format&fit=crop',
-    icon: Laptop,
-  },
-  {
-    name: 'Gaming Mouse RGB',
-    price: 'Rp 399.000',
-    image: 'https://images.unsplash.com/photo-1616296425622-4560a2ad83de?ixid=M3w3OTkxMTl8MHwxfHNlYXJjaHwxfHxHYW1pbmclMjBNb3VzZSUyMFJHQnxlbnwwfDB8fHwxNzYyOTE3MzE2fDA&ixlib=rb-4.1.0&w=1600&auto=format&fit=crop&q=80',
-    icon: Mouse,
-  },
-  {
-    name: 'SSD NVMe 1TB',
-    price: 'Rp 1.299.000',
-    image: 'https://images.unsplash.com/photo-1661112176771-591411832406?ixid=M3w3OTkxMTl8MHwxfHJhbmRvbXx8fHx8fHx8fDE3NjI5MTczMTZ8&ixlib=rb-4.1.0&w=1600&auto=format&fit=crop&q=80',
-    icon: HardDrive,
-  },
-  {
-    name: 'Monitor 27" 144Hz',
-    price: 'Rp 3.599.000',
-    image: 'https://images.unsplash.com/photo-1586773860418-d37222d8fce3?q=80&w=1600&auto=format&fit=crop',
-    icon: Monitor,
-  },
-  {
-    name: 'Wi‑Fi 6 Router',
-    price: 'Rp 1.099.000',
-    image: 'https://images.unsplash.com/photo-1606904825846-647eb07f5be2?ixid=M3w3OTkxMTl8MHwxfHNlYXJjaHwxfHxXaSVFMiU4MCU5MUZpJTIwNiUyMFJvdXRlcnxlbnwwfDB8fHwxNzYyOTE3MzE3fDA&ixlib=rb-4.1.0&w=1600&auto=format&fit=crop&q=80',
-    icon: Router,
-  },
-  {
-    name: 'CPU Ryzen 7 Series',
-    price: 'Rp 4.599.000',
-    image: 'https://images.unsplash.com/photo-1614064641938-3bbee52942c7?q=80&w=1600&auto=format&fit=crop',
-    icon: Cpu,
-  },
+  { name: 'Laptop Productivity 14', price: 'Rp 8.499.000', image: 'https://images.unsplash.com/photo-1632893037520-7c223d9495f0?ixid=M3w3OTkxMTl8MHwxfHNlYXJjaHwxfHxMYXB0b3AlMjBVbHRyYWJvb2slMjAxMyUyME9MRUR8ZW58MHwwfHx8MTc2MjkxODEzNnww&ixlib=rb-4.1.0&w=1600&auto=format&fit=crop&q=80', icon: Laptop },
+  { name: 'Gaming Mouse RGB', price: 'Rp 399.000', image: 'https://images.unsplash.com/photo-1632893037520-7c223d9495f0?ixid=M3w3OTkxMTl8MHwxfHNlYXJjaHwxfHxMYXB0b3AlMjBVbHRyYWJvb2slMjAxMyUyME9MRUR8ZW58MHwwfHx8MTc2MjkxODEzNnww&ixlib=rb-4.1.0&w=1600&auto=format&fit=crop&q=80', icon: Mouse },
+  { name: 'SSD NVMe 1TB', price: 'Rp 1.299.000', image: 'https://images.unsplash.com/photo-1632893037520-7c223d9495f0?ixid=M3w3OTkxMTl8MHwxfHNlYXJjaHwxfHxMYXB0b3AlMjBVbHRyYWJvb2slMjAxMyUyME9MRUR8ZW58MHwwfHx8MTc2MjkxODEzNnww&ixlib=rb-4.1.0&w=1600&auto=format&fit=crop&q=80', icon: HardDrive },
+  { name: 'Monitor 27" 144Hz', price: 'Rp 3.599.000', image: 'https://images.unsplash.com/photo-1651241678859-96f075bf6780?ixid=M3w3OTkxMTl8MHwxfHNlYXJjaHwxfHxMYXB0b3AlMjBQcm9kdWN0aXZpdHklMjAxNHxlbnwwfDB8fHwxNzYyOTE4MTM3fDA&ixlib=rb-4.1.0&w=1600&auto=format&fit=crop&q=80', icon: Monitor },
+  { name: 'Wi‑Fi 6 Router', price: 'Rp 1.099.000', image: 'https://images.unsplash.com/photo-1651241678859-96f075bf6780?ixid=M3w3OTkxMTl8MHwxfHNlYXJjaHwxfHxMYXB0b3AlMjBQcm9kdWN0aXZpdHklMjAxNHxlbnwwfDB8fHwxNzYyOTE4MTM3fDA&ixlib=rb-4.1.0&w=1600&auto=format&fit=crop&q=80', icon: Router },
+  { name: 'CPU Ryzen 7 Series', price: 'Rp 4.599.000', image: 'https://images.unsplash.com/photo-1651241678859-96f075bf6780?ixid=M3w3OTkxMTl8MHwxfHNlYXJjaHwxfHxMYXB0b3AlMjBQcm9kdWN0aXZpdHklMjAxNHxlbnwwfDB8fHwxNzYyOTE4MTM3fDA&ixlib=rb-4.1.0&w=1600&auto=format&fit=crop&q=80', icon: Cpu },
+]
+
+// Lebih banyak produk (diperbanyak sesuai permintaan)
+const moreProducts = [
+  { name: 'Laptop Ultrabook 13 OLED', price: 'Rp 12.999.000', image: 'https://images.unsplash.com/photo-1632893037520-7c223d9495f0?ixid=M3w3OTkxMTl8MHwxfHNlYXJjaHwxfHxMYXB0b3AlMjBVbHRyYWJvb2slMjAxMyUyME9MRUR8ZW58MHwwfHx8MTc2MjkxODEzNnww&ixlib=rb-4.1.0&w=1600&auto=format&fit=crop&q=80', icon: Laptop },
+  { name: 'Laptop Gaming RTX 4060', price: 'Rp 18.499.000', image: 'https://images.unsplash.com/photo-1632893037520-7c223d9495f0?ixid=M3w3OTkxMTl8MHwxfHNlYXJjaHwxfHxMYXB0b3AlMjBVbHRyYWJvb2slMjAxMyUyME9MRUR8ZW58MHwwfHx8MTc2MjkxODEzNnww&ixlib=rb-4.1.0&w=1600&auto=format&fit=crop&q=80', icon: Laptop },
+  { name: 'Mouse Wireless Silent', price: 'Rp 199.000', image: 'https://images.unsplash.com/photo-1632893037520-7c223d9495f0?ixid=M3w3OTkxMTl8MHwxfHNlYXJjaHwxfHxMYXB0b3AlMjBVbHRyYWJvb2slMjAxMyUyME9MRUR8ZW58MHwwfHx8MTc2MjkxODEzNnww&ixlib=rb-4.1.0&w=1600&auto=format&fit=crop&q=80', icon: Mouse },
+  { name: 'Mouse Gaming 8K DPI', price: 'Rp 549.000', image: 'https://images.unsplash.com/photo-1632893037520-7c223d9495f0?ixid=M3w3OTkxMTl8MHwxfHNlYXJjaHwxfHxMYXB0b3AlMjBVbHRyYWJvb2slMjAxMyUyME9MRUR8ZW58MHwwfHx8MTc2MjkxODEzNnww&ixlib=rb-4.1.0&w=1600&auto=format&fit=crop&q=80', icon: Mouse },
+  { name: 'SSD SATA 512GB', price: 'Rp 699.000', image: 'https://images.unsplash.com/photo-1632893037520-7c223d9495f0?ixid=M3w3OTkxMTl8MHwxfHNlYXJjaHwxfHxMYXB0b3AlMjBVbHRyYWJvb2slMjAxMyUyME9MRUR8ZW58MHwwfHx8MTc2MjkxODEzNnww&ixlib=rb-4.1.0&w=1600&auto=format&fit=crop&q=80', icon: HardDrive },
+  { name: 'HDD 2TB 3.5"', price: 'Rp 999.000', image: 'https://images.unsplash.com/photo-1632893037520-7c223d9495f0?ixid=M3w3OTkxMTl8MHwxfHNlYXJjaHwxfHxMYXB0b3AlMjBVbHRyYWJvb2slMjAxMyUyME9MRUR8ZW58MHwwfHx8MTc2MjkxODEzNnww&ixlib=rb-4.1.0&w=1600&auto=format&fit=crop&q=80', icon: HardDrive },
+  { name: 'Monitor 24" IPS', price: 'Rp 1.899.000', image: 'https://images.unsplash.com/photo-1651241678859-96f075bf6780?ixid=M3w3OTkxMTl8MHwxfHNlYXJjaHwxfHxMYXB0b3AlMjBQcm9kdWN0aXZpdHklMjAxNHxlbnwwfDB8fHwxNzYyOTE4MTM3fDA&ixlib=rb-4.1.0&w=1600&auto=format&fit=crop&q=80', icon: Monitor },
+  { name: 'Monitor Ultrawide 34"', price: 'Rp 6.999.000', image: 'https://images.unsplash.com/photo-1651241678859-96f075bf6780?ixid=M3w3OTkxMTl8MHwxfHNlYXJjaHwxfHxMYXB0b3AlMjBQcm9kdWN0aXZpdHklMjAxNHxlbnwwfDB8fHwxNzYyOTE4MTM3fDA&ixlib=rb-4.1.0&w=1600&auto=format&fit=crop&q=80', icon: Monitor },
+  { name: 'Router Mesh 2-Pack', price: 'Rp 2.499.000', image: 'https://images.unsplash.com/photo-1651241678859-96f075bf6780?ixid=M3w3OTkxMTl8MHwxfHNlYXJjaHwxfHxMYXB0b3AlMjBQcm9kdWN0aXZpdHklMjAxNHxlbnwwfDB8fHwxNzYyOTE4MTM3fDA&ixlib=rb-4.1.0&w=1600&auto=format&fit=crop&q=80', icon: Router },
+  { name: 'Access Point Wi‑Fi 6E', price: 'Rp 3.299.000', image: 'https://images.unsplash.com/photo-1651241678859-96f075bf6780?ixid=M3w3OTkxMTl8MHwxfHNlYXJjaHwxfHxMYXB0b3AlMjBQcm9kdWN0aXZpdHklMjAxNHxlbnwwfDB8fHwxNzYyOTE4MTM3fDA&ixlib=rb-4.1.0&w=1600&auto=format&fit=crop&q=80', icon: Router },
+  { name: 'CPU Ryzen 5 Series', price: 'Rp 2.999.000', image: 'https://images.unsplash.com/photo-1651241678859-96f075bf6780?ixid=M3w3OTkxMTl8MHwxfHNlYXJjaHwxfHxMYXB0b3AlMjBQcm9kdWN0aXZpdHklMjAxNHxlbnwwfDB8fHwxNzYyOTE4MTM3fDA&ixlib=rb-4.1.0&w=1600&auto=format&fit=crop&q=80', icon: Cpu },
+  { name: 'CPU Intel Core i7 Gen 13', price: 'Rp 5.299.000', image: 'https://images.unsplash.com/photo-1651241678859-96f075bf6780?ixid=M3w3OTkxMTl8MHwxfHNlYXJjaHwxfHxMYXB0b3AlMjBQcm9kdWN0aXZpdHklMjAxNHxlbnwwfDB8fHwxNzYyOTE4MTM3fDA&ixlib=rb-4.1.0&w=1600&auto=format&fit=crop&q=80', icon: Cpu },
+  { name: 'Keyboard Mechanical TKL', price: 'Rp 799.000', image: 'https://images.unsplash.com/photo-1632893037520-7c223d9495f0?ixid=M3w3OTkxMTl8MHwxfHNlYXJjaHwxfHxMYXB0b3AlMjBVbHRyYWJvb2slMjAxMyUyME9MRUR8ZW58MHwwfHx8MTc2MjkxODEzNnww&ixlib=rb-4.1.0&w=1600&auto=format&fit=crop&q=80', icon: Laptop },
+  { name: 'Headset Gaming 7.1', price: 'Rp 899.000', image: 'https://images.unsplash.com/photo-1632893037520-7c223d9495f0?ixid=M3w3OTkxMTl8MHwxfHNlYXJjaHwxfHxMYXB0b3AlMjBVbHRyYWJvb2slMjAxMyUyME9MRUR8ZW58MHwwfHx8MTc2MjkxODEzNnww&ixlib=rb-4.1.0&w=1600&auto=format&fit=crop&q=80', icon: Laptop },
+  { name: 'Webcam Full HD', price: 'Rp 399.000', image: 'https://images.unsplash.com/photo-1761649346830-27beb963bc41?ixid=M3w3OTkxMTl8MHwxfHNlYXJjaHwxfHxDUFUlMjBJbnRlbCUyMENvcmUlMjBpNyUyMEdlbiUyMDEzfGVufDB8MHx8fDE3NjI5MTgxMzZ8MA&ixlib=rb-4.1.0&w=1600&auto=format&fit=crop&q=80', icon: Laptop },
+  { name: 'Speaker Bluetooth', price: 'Rp 499.000', image: 'https://images.unsplash.com/photo-1761649346830-27beb963bc41?ixid=M3w3OTkxMTl8MHwxfHNlYXJjaHwxfHxDUFUlMjBJbnRlbCUyMENvcmUlMjBpNyUyMEdlbiUyMDEzfGVufDB8MHx8fDE3NjI5MTgxMzZ8MA&ixlib=rb-4.1.0&w=1600&auto=format&fit=crop&q=80', icon: Laptop },
+  { name: 'USB-C Hub 8-in-1', price: 'Rp 649.000', image: 'https://images.unsplash.com/photo-1761649346830-27beb963bc41?ixid=M3w3OTkxMTl8MHwxfHNlYXJjaHwxfHxDUFUlMjBJbnRlbCUyMENvcmUlMjBpNyUyMEdlbiUyMDEzfGVufDB8MHx8fDE3NjI5MTgxMzZ8MA&ixlib=rb-4.1.0&w=1600&auto=format&fit=crop&q=80', icon: Laptop },
+  { name: 'Chair Ergonomic', price: 'Rp 2.199.000', image: 'https://images.unsplash.com/photo-1626958390898-162d3577f293?ixid=M3w3OTkxMTl8MHwxfHNlYXJjaHwxfHxLZXlib2FyZCUyME1lY2hhbmljYWwlMjBUS0x8ZW58MHwwfHx8MTc2MjkxODEzOHww&ixlib=rb-4.1.0&w=1600&auto=format&fit=crop&q=80', icon: Laptop },
+  { name: 'Printer Ink Tank', price: 'Rp 2.499.000', image: 'https://images.unsplash.com/photo-1640300065113-738f2abb8ba6?ixid=M3w3OTkxMTl8MHwxfHNlYXJjaHwxfHxIZWFkc2V0JTIwR2FtaW5nJTIwNy4xfGVufDB8MHx8fDE3NjI5MTgxNDV8MA&ixlib=rb-4.1.0&w=1600&auto=format&fit=crop&q=80', icon: Laptop },
+  { name: 'UPS 1200VA', price: 'Rp 1.299.000', image: 'https://images.unsplash.com/photo-1761649346830-27beb963bc41?ixid=M3w3OTkxMTl8MHwxfHNlYXJjaHwxfHxDUFUlMjBJbnRlbCUyMENvcmUlMjBpNyUyMEdlbiUyMDEzfGVufDB8MHx8fDE3NjI5MTgxMzZ8MA&ixlib=rb-4.1.0&w=1600&auto=format&fit=crop&q=80', icon: Laptop },
 ]
 
 const services = [
@@ -47,6 +42,12 @@ const services = [
   { name: 'Upgrade RAM/SSD', price: 'Rp 100.000', desc: 'Jasa pasang + optimasi sistem' },
   { name: 'Troubleshooting Hardware', price: 'Rp 150.000 - 350.000', desc: 'Diagnosa & perbaikan ringan' },
   { name: 'Service Laptop/PC', price: 'Mulai Rp 200.000', desc: 'Perbaikan menyeluruh sesuai kerusakan' },
+  // tambahan layanan
+  { name: 'Pindah Data & Backup', price: 'Rp 120.000', desc: 'Backup dokumen, foto, dan data penting' },
+  { name: 'Perakitan PC Kustom', price: 'Rp 150.000 - 300.000', desc: 'Rakit PC sesuai kebutuhan dan budget' },
+  { name: 'Optimasi Gaming & Creator', price: 'Rp 150.000', desc: 'Setting driver, BIOS, dan software' },
+  { name: 'Install Software & Office', price: 'Rp 80.000', desc: 'Install aplikasi kerja dan produktivitas' },
+  { name: 'Jasa Setting Jaringan Kantor', price: 'Mulai Rp 300.000', desc: 'Setup router, AP, dan segmentasi' },
 ]
 
 function Logo() {
@@ -64,6 +65,7 @@ function Header() {
   const menus = useMemo(() => [
     { label: 'Beranda', href: '#home' },
     { label: 'Produk', href: '#produk' },
+    { label: 'Lebih Banyak', href: '#lebih-banyak' },
     { label: 'Service', href: '#service' },
     { label: 'Kontak', href: '#kontak' },
   ], [])
@@ -165,6 +167,25 @@ function Products() {
   )
 }
 
+function MoreProducts() {
+  return (
+    <section id="lebih-banyak" className="relative py-10">
+      <div className="absolute inset-0 bg-[radial-gradient(circle_at_15%_20%,rgba(6,182,212,0.14),transparent_35%),radial-gradient(circle_at_85%_80%,rgba(168,85,247,0.14),transparent_35%)]" />
+      <div className="relative mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
+        <div className="mx-auto max-w-3xl text-center">
+          <h3 className="text-2xl sm:text-3xl font-bold text-white">Lebih Banyak Produk</h3>
+          <p className="mt-3 text-white/70">Pilih beragam perangkat elektronik dan aksesoris untuk kerja, belajar, dan hiburan.</p>
+        </div>
+        <div className="mt-8 grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
+          {moreProducts.map((p) => (
+            <ProductCard key={p.name} item={p} />
+          ))}
+        </div>
+      </div>
+    </section>
+  )
+}
+
 function ServiceCard({ s }) {
   return (
     <div className="rounded-2xl border border-white/10 bg-white/5 p-5 backdrop-blur-xl hover:bg-white/10 transition">
@@ -199,7 +220,7 @@ function Services() {
           </div>
           <div className="rounded-3xl border border-white/10 bg-gradient-to-br from-slate-900/60 to-slate-800/60 p-6 backdrop-blur-xl shadow-2xl">
             <div className="aspect-[4/3] w-full overflow-hidden rounded-2xl">
-              <img src="https://images.unsplash.com/photo-1518770660439-4636190af475?q=80&w=1600&auto=format&fit=crop" alt="Service" className="h-full w-full object-cover" />
+              <img src="https://images.unsplash.com/photo-1761649346830-27beb963bc41?ixid=M3w3OTkxMTl8MHwxfHNlYXJjaHwxfHxDUFUlMjBJbnRlbCUyMENvcmUlMjBpNyUyMEdlbiUyMDEzfGVufDB8MHx8fDE3NjI5MTgxMzZ8MA&ixlib=rb-4.1.0&w=1600&auto=format&fit=crop&q=80" alt="Service" className="h-full w-full object-cover" />
             </div>
             <ul className="mt-6 grid grid-cols-2 gap-4 text-sm text-white/80">
               <li className="rounded-xl bg-white/5 p-3">Diagnosa awal gratis*</li>
@@ -249,6 +270,7 @@ export default function App() {
       <Header />
       <Hero />
       <Products />
+      <MoreProducts />
       <Services />
       <Footer />
     </div>
